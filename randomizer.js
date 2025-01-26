@@ -1,6 +1,5 @@
-
-// function to randomize arrays
-  const momAffirmations = [
+// Arrays of affirmations
+const momAffirmations = [
     "I am a loving and supportive mom who nurtures my family",
     "My family feels my unwavering care and kindness every day",
     "I bring warmth and joy into every moment with my children",
@@ -45,9 +44,18 @@
     "I am proud to be a designer and a trendsetter in style and creativity",
     "My love for fashion and web design drives me to innovate and inspire"
   ];
-  const randomIndex = Math.floor(Math.random() * (12 - 0 + 1) + 0);
   
-  function affirmationRandomizer(arr1, arr2, arr3) {
-    return ` 👶 ${arr1[randomIndex]}.\n ❤️ ${arr2[randomIndex]}.\n 🎨 ${arr3[randomIndex]}.`
-  };
-  console.log(affirmationRandomizer(momAffirmations, wifeAffirmations, designerStyleAffirmations))
+  // Function to randomize affirmations
+  function affirmationRandomizer(...arrays) {
+    return arrays
+      .map((arr, index) => {
+        if (!arr || arr.length === 0) return `Array ${index + 1} is empty.`;
+        const randomIndex = Math.floor(Math.random() * arr.length);
+        return arr[randomIndex];
+      })
+      .map((affirmation, i) => ` ${["👶", "❤️", "🎨"][i] || "⭐"} ${affirmation}`)
+      .join("\n");
+  }
+  
+  // Test the function 
+  console.log(affirmationRandomizer(momAffirmations, wifeAffirmations, designerStyleAffirmations));
