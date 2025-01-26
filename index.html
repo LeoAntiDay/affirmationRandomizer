@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Affirmations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌟 Your Daily Affirmations 🌟</h1>
+    <div id="affirmations">
+      <!-- Affirmations will be loaded here -->
+    </div>
+  </div>
+
+  <script src="randomizer.js"></script>
+  <script>
+    // Call the randomizer and display affirmations
+    const output = affirmationRandomizer(
+      momAffirmations,
+      wifeAffirmations,
+      designerStyleAffirmations
+    );
+    document.getElementById("affirmations").innerHTML = 
+      output.split("\n").map(line => `<p>${line}</p>`).join("");
+  </script>
+</body>
+</html>
